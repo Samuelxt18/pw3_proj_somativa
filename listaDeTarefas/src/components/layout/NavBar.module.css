@@ -1,0 +1,24 @@
+/*  container do menu */
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #9a9bda;
+    padding: 1em; 
+}
+
+/*  regras da lista de links */
+.list{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* regras dos links*/
+.item{
+    margin-right: 1em;
+    color: #fff;
+}
+.logo {
+    width: 120px;
+}
