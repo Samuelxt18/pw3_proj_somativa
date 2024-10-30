@@ -129,7 +129,7 @@ const CreateList = () => {
                     text='Escolha uma categoria da tarefa'
                     options={categorias}
                     onChange={handleChangeCategory}
-                    value={tarefa.categoria}
+                    value={tarefa.categoria} // Adicione esta linha
                 />
 
                 <Button
