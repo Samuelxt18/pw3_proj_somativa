@@ -1,5 +1,5 @@
 import style from './CardTarefas.module.css'
-import Button from './button'
+import Button from './forms/Button'
 
 const CardTarefa = ({ tarefa, hora, imagem, cod_tarefas}) => {
     
