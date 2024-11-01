@@ -22,11 +22,10 @@ const CreateList = () => {
             body: JSON.stringify(tarefa)
         })
         .then(resp => {
-            if (resp.status === 201) {
-                return resp.json();
-            } else {
+            if (!resp.ok) {
                 throw new Error(`Erro ao cadastrar a tarefa (Status: ${resp.status})`);
             }
+            return resp.json();
         })
         .then(data => {
             alert('Tarefa cadastrada com sucesso!');
@@ -38,20 +37,27 @@ const CreateList = () => {
     }
 
     function handleChangeCategory(event) {
-        setTarefa({ ...tarefa, categoria: event.target.value });
+        setTarefa({...tarefa, categoria: event.target.value });
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/listagemCateorias', {
+        fetch('http://localhost:5000/listagemCategorias', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
         })
-        .then(resp => resp.json())
+        .then(resp => {
+            if (!resp.ok) {
+                throw new Error(`Erro ao carregar categorias (Status: ${resp.status})`);
+            }
+            return resp.json();
+        })
         .then(data => {
             if (data && data.data) {
                 setCategorias(data.data);
+            } else {
+                console.error('Dados inesperados:', data);
             }
         })
         .catch(error => {

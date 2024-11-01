@@ -37,11 +37,11 @@ const DetailTarefa = () => {
                 <img className={style.img_tarefa_detail} src={corrida} alt='se voce esta lendo isso eu to chorando internamente' />
             </div>
             <div className={style.info}>
-            <span className={style.tarefa}>{dream.cod_categoria}</span>
-                <span className={style.valor}>{dream.nome_categoria}</span>
+            <span className={style.tarefa}>{setTarefa.cod_categoria}</span>
+                <span className={style.valor}>{setTarefa.nome_categoria}</span>
 
                 <span className={style.descricao}>
-                    {dream.descricao_tarefa}
+                    {setTarefa.descricao_tarefa}
                 </span>
                 <div className={style.container_buttons}>
                     <Button 
@@ -57,3 +57,5 @@ const DetailTarefa = () => {
         </div>
     )
 }
+
+export default DetailTarefa

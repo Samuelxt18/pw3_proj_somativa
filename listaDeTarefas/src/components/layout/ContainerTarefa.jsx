@@ -1,7 +1,7 @@
 import React from "react"; 
 import style from './Container.module.css'
 
-const Container  = (props) =>{
+const ContainerTarefa  = (props) =>{
     return(
         <div className={style.container}>
             
@@ -10,4 +10,4 @@ const Container  = (props) =>{
     )
 }
 
-export default Container
+export default ContainerTarefa
