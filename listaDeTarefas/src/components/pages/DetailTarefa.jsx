@@ -1,7 +1,8 @@
+
 import {React, useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import style from './DetailTarefa.module.css'
-import Button from '../forms/Button'
+import Button from '../button'
 import corrida from '../../assets/corrida.png'
 
 const DetailTarefa = () => {
@@ -12,7 +13,7 @@ const DetailTarefa = () => {
 
         useEffect(()=>{
 
-            fetch(`http://localhost:5000/ListTarefa/${tarefa}`, {
+            fetch(`http://localhost:5000/listarTarefas/${cod_tarefa}`, {
                 method: 'GET',
                 mode:'cors',
                 headers: {
@@ -37,17 +38,16 @@ const DetailTarefa = () => {
                 <img className={style.img_tarefa_detail} src={corrida} alt='se voce esta lendo isso eu to chorando internamente' />
             </div>
             <div className={style.info}>
-            <span className={style.tarefa}>{setTarefa.cod_categoria}</span>
-                <span className={style.valor}>{setTarefa.nome_categoria}</span>
+            <span className={style.tarefa}>{tarefa.nome_tarefa}</span>
+                <span className={style.valor}>{tarefa.data_tarefa}</span>
 
                 <span className={style.descricao}>
-                    {setTarefa.descricao_tarefa}
+                    {tarefa.descricao_tarefa}
                 </span>
                 <div className={style.container_buttons}>
                     <Button 
                         label='EDITAR'
                     />
-
 
                     <Button 
                         label='EXCLUIR'
@@ -58,5 +58,4 @@ const DetailTarefa = () => {
         </div>
     )
 }
-
 export default DetailTarefa

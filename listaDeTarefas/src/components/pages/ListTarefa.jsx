@@ -33,7 +33,7 @@ const ListTarefa = () => {
 
     return (
         <Container>
-            <section className={style.list_book_container}>
+            <section className={style.list_tarefa_container}>
                 <h1>LISTA DE TAREFAS</h1>
                 <ContainerTarefa>
                     {
