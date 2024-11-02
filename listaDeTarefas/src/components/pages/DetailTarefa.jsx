@@ -1,8 +1,8 @@
 import {React, useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import style from './DetailTarefa.module.css'
-import Button from '../button'
-import corrida from '../../assets/sonhos/corrida.jpg'
+import Button from '../forms/Button'
+import corrida from '../../assets/corrida.png'
 
 const DetailTarefa = () => {
     const {cod_tarefa} =useParams()
@@ -12,7 +12,7 @@ const DetailTarefa = () => {
 
         useEffect(()=>{
 
-            fetch(`http://localhost:5000/listarSonho/${tarefa}`, {
+            fetch(`http://localhost:5000/ListTarefa/${tarefa}`, {
                 method: 'GET',
                 mode:'cors',
                 headers: {
@@ -23,7 +23,7 @@ const DetailTarefa = () => {
             })
                 .then((resp)=>resp.json())
                 .then((data)=>{
-                setDream(data.data);
+                setTarefa(data.data);
                 console.log("dados da tarefa" + data.data);
             })
             .catch((err)=>{console.log(err)});
@@ -47,6 +47,7 @@ const DetailTarefa = () => {
                     <Button 
                         label='EDITAR'
                     />
+
 
                     <Button 
                         label='EXCLUIR'

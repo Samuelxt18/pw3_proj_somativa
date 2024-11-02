@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react"; // Importando useState e useEffect aqui
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'; // Importando Link
 import style from './ListTarefa.module.css';
 import Container from "../layout/Container.jsx";
 import ContainerTarefa from '../layout/ContainerTarefa.jsx';
@@ -6,10 +7,8 @@ import CardTarefa from "../CardTarefas";
 import corrida from '../../assets/corrida.png';
 
 const ListTarefa = () => {
-    /* CRIAÇÃO DO STATE DOS DADOS DAS TAREFAS */
-    const [tarefas, setTarefas] = useState([]); // Renomeado para plural
+    const [tarefas, setTarefas] = useState([]);
 
-    /* RECUPERA OS DADOS DAS TAREFAS DO BACKEND */
     useEffect(() => {
         fetch('http://localhost:5000/listagemTarefas', {
             method: 'GET',
@@ -25,7 +24,7 @@ const ListTarefa = () => {
         })
         .then((data) => {
             console.log('TAREFAS: ', data.data[0]);
-            setTarefas(data.data); // Corrigido para setTarefas
+            setTarefas(data.data);
         })
         .catch((err) => { 
             console.error('Erro ao carregar tarefas:', err);
@@ -38,18 +37,21 @@ const ListTarefa = () => {
                 <h1>LISTA DE TAREFAS</h1>
                 <ContainerTarefa>
                     {
-                        tarefas.length > 0 ? ( // Verifica se há tarefas
+                        tarefas.length > 0 ? (
                             tarefas.map((t) => (
-                                <CardTarefa
-                                    key={t.cod_tarefa} // Certifique-se de que cod_categoria é único
-                                    tarefa={t.nome_tarefa} // Alterado para corresponder ao esperado
-                                    hora={t.data_tarefa} // Se necessário, adicione a propriedade hora
-                                    imagem={corrida} // Imagem padrão
-                                    cod_tarefas={t.cod_tarefa} // Adicione esta propriedade se necessário
-                                />
+                                <div key={t.cod_tarefa}> {/* Envolvendo cada tarefa em um div */}
+                                    <Link to={`/DetailTarefa/${t.cod_tarefa}`}>
+                                        <CardTarefa
+                                            tarefa={t.nome_tarefa}
+                                            hora={t.data_tarefa}
+                                            imagem={corrida}
+                                            cod_tarefas={t.cod_tarefa}
+                                        />
+                                    </Link>
+                                </div>
                             ))
                         ) : (
-                            <p>Nenhuma tarefa encontrada.</p> // Mensagem caso não haja tarefas
+                            <p>Nenhuma tarefa encontrada.</p>
                         )
                     }
                 </ContainerTarefa>
