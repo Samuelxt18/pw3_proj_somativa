@@ -13,7 +13,8 @@ const DetailTarefa = () => {
     });
 
     useEffect(() => {
-        fetch(`http://localhost:5000/listarTarefas/${cod_tarefa}`, {
+        console.log("ID da tarefa:", cod_tarefa); // Log do ID
+        fetch(`http://localhost:5000/listagemTarefas/${cod_tarefa}`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -22,12 +23,34 @@ const DetailTarefa = () => {
                 'Access-Control-Allow-Headers': '*'
             }
         })
-            .then((resp) => resp.json())
-            .then((data) => {
-                console.log("Resposta completa da API:", data);
-                setTarefa(data.data); // Ajuste conforme necessário
-            })
-            .catch((err) => console.log("Erro ao buscar dados:", err));
+        .then((resp) => {
+            if (!resp.ok) {
+                throw new Error('Erro na resposta da API');
+            }
+            return resp.json();
+        })
+        .then((data) => {
+            console.log("Resposta completa da API:", data); // Log da resposta
+            if (data && !data.errorStatus && data.data) {
+                console.log("Dados da tarefa:", data.data); // Log dos dados da tarefa
+                setTarefa(data.data);
+            } else {
+                console.error("Dados não encontrados ou estrutura inesperada:", data);
+                setTarefa({
+                    nome_tarefa: "Nome não disponível",
+                    data_tarefa: "",
+                    descricao_tarefa: ""
+                });
+            }
+        })
+        .catch((err) => {
+            console.log("Erro ao buscar dados:", err);
+            setTarefa({
+                nome_tarefa: "Erro ao carregar",
+                data_tarefa: "",
+                descricao_tarefa: ""
+            });
+        });
     }, [cod_tarefa]);
 
     return (
