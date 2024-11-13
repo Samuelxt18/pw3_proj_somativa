@@ -5,7 +5,7 @@ import Button from '../button';
 import corrida from '../../assets/corrida.png';
 
 const DetailTarefa = () => {
-    const { cod_tarefa } = useParams();
+    const { id } = useParams();
     const [tarefa, setTarefa] = useState({
         nome_tarefa: '',
         data_tarefa: '',
@@ -13,8 +13,8 @@ const DetailTarefa = () => {
     });
 
     useEffect(() => {
-        console.log("ID da tarefa:", cod_tarefa); // Log do ID
-        fetch(`http://localhost:5000/listagemTarefas/${cod_tarefa}`, {
+        console.log("ID da tarefa:", id); // Log do ID
+        fetch(`http://localhost:5000/listagemTarefas/${id}`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -51,7 +51,7 @@ const DetailTarefa = () => {
                 descricao_tarefa: ""
             });
         });
-    }, [cod_tarefa]);
+    }, [id]);
 
     return (
         <div className={style.grid}> 
