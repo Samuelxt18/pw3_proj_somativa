@@ -69,8 +69,16 @@ const DetailTarefa = () => {
                     {tarefa.descricao_tarefa || "Descrição não disponível"}
                 </span>
                 <div className={style.container_buttons}>
-                    <Button label="EDITAR" />
-                    <Button label="EXCLUIR" />
+                    <Button label="EDITAR"
+                          router='/updateTarefa/'
+                          cod_tarefa={tarefa.cod_tarefa}
+                    />
+
+
+                    <Button label="EXCLUIR" 
+                      router='/deleteTarefa/'
+                      cod_tarefa={tarefa.cod_tarefa}
+                    />
                 </div>
             </div>
         </div>

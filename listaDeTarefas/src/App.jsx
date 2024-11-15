@@ -14,7 +14,8 @@ import Home from './components/pages/Home'
 import ListTarefa from './components/pages/ListTarefa'
 import CreateList from './components/pages/CreateList'
 import DetailTarefa from './components/pages/DetailTarefa'
-
+import DeleteTarefa from './components/pages/DeleteTarefa'
+// import UpdateTarefa from './components/pages/UpdateTarefa'
 
    /*tem que estar igual no navbar na tag route quando for importar Samuel */
 
@@ -35,6 +36,8 @@ function App() {
       <Route path='/createList' element={<CreateList/>}/>
       <Route path='/ListTarefa' element={<ListTarefa/>}/> 
       <Route path='/DetailTarefa/:id' element={<DetailTarefa/>}/>
+      <Route path='/DeleteTarefa/:id' element={<DeleteTarefa/>}/>
+      {/* <Route path='/UpdateTarefa/:id' element={<UpdateTarefa/>}/> */}
       </Route>
       </Routes>
 

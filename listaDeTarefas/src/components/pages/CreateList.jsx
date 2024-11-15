@@ -8,7 +8,7 @@ const CreateList = () => {
     const [categorias, setCategorias] = useState([]);
     const [tarefa, setTarefa] = useState({ nome_tarefa: "", data_tarefa: "", descricao_tarefa: "", categoria: "" });
 
-    function handleChangeTarefa(event) {
+    function handlerChangeTarefa(event) {
         setTarefa({ ...tarefa, [event.target.name]: event.target.value });
     }
 
@@ -108,7 +108,7 @@ const CreateList = () => {
                     name='nome_tarefa'
                     placeHolder='Digite sua tarefa'
                     text='Tarefa'
-                    onChange={handleChangeTarefa}
+                    onChange={handlerChangeTarefa}
                     value={tarefa.nome_tarefa}
                 />
 
@@ -117,7 +117,7 @@ const CreateList = () => {
                     name='data_tarefa'
                     placeHolder='Digite quando irá ser realizada'
                     text='Data da tarefa'
-                    onChange={handleChangeTarefa}
+                    onChange={handlerChangeTarefa}
                     value={tarefa.data_tarefa}
                 />
 
@@ -126,7 +126,7 @@ const CreateList = () => {
                     name='descricao_tarefa'
                     placeHolder='Digite a descrição da tarefa'
                     text='Descrição da tarefa'
-                    onChange={handleChangeTarefa}
+                    onChange={handlerChangeTarefa}
                     value={tarefa.descricao_tarefa}
                 />
 
@@ -134,7 +134,7 @@ const CreateList = () => {
                     name='categoria'
                     text='Escolha uma categoria da tarefa'
                     options={categorias}
-                    onChange={handleChangeCategory}
+                    handleChangeCategoria={handleChangeCategory}
                     value={tarefa.categoria} // Adicione esta linha
                 />
 
