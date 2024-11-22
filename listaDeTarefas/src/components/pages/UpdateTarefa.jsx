@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 
-import style from './UpdateTarefa.module.css'
+import style from '../pages/UpdateTarefa'
 import Input from '../forms/Input'
 import Select from '../forms/Select'
 import Button from '../forms/Button'
@@ -128,16 +128,16 @@ const UpdateTarefa = () => {
                                         id='nome_tarefa'
                                         placeholder='Digite o título da tarefa'
                                         text='Digite o título da tarefa'
-                                        handlerChangeTarefa={handlerChangeTarefa}
+                                        onChange={handlerChangeTarefa}
                                         value={tarefa.nome_tarefa} />
 
                                 <Input 
-                                        type='text'
+                                        type='date'
                                         name='data_tarefa'
                                         id='data_tarefa'
                                         placeholder='Digite quando irá ser realizada'
                                         text='Digite quando irá ser realizada'
-                                        handlerChangeTarefa={handlerChangeTarefa} 
+                                        onChange={handlerChangeTarefa} 
                                         value={tarefa.data_tarefa}/>
 
                                 <Input 
@@ -146,14 +146,14 @@ const UpdateTarefa = () => {
                                         id='descricao_tarefa'
                                         placeholder='Digite a descrição da tarefa'
                                         text='Descrição'
-                                        handlerChangeTarefa={handlerChangeTarefa}
+                                        onChange={handlerChangeTarefa}
                                         value={tarefa.descricao_tarefa} />
                                 
                                 <Select 
                                         name="categoria_id"
                                         text="Escolha uma categoria da tarefa"
                                         options={categorias}
-                                        handleChangeCategoria={handleChangeCategoria} />
+                                        onChange={handleChangeCategoria} />
 
                                 <Button 
                                 rotulo='Editar Tarefa'/>
